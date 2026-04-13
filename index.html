@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conditions d'utilisation — VGVault</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Couleurs VGVault */
+      --blue-xlight:  #EBF5FB;
+      --purple-xlight:#F5EEF8;
+      --blue-pastel:  #AED6F1;
+      --purple-pastel:#D7BDE2;
+      --blue-mid:     #5DADE2;
+      --blue-deep:    #2E86C1;
+      --purple-mid:   #A569BD;
+      --purple-deep:  #7D3C98;
+      --lavender:     #C5CAE9;
+      --lilac:        #E8DAEF;
+
+      --text-primary:   #1a1a2e;
+      --text-secondary: #555577;
+      --text-muted:     #8888aa;
+
+      --card-bg:   #ffffff;
+      --card-border: rgba(93, 173, 226, 0.18);
+      --card-border-hover: rgba(125, 60, 152, 0.25);
+
+      --gradient-deep: linear-gradient(135deg, #5DADE2 0%, #7D3C98 100%);
+      --gradient-bg:   linear-gradient(135deg, #EBF5FB 0%, #F5EEF8 100%);
+      --gradient-pastel: linear-gradient(135deg, #AED6F1 0%, #D7BDE2 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      font-size: 0.93rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Fond décoratif ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 45% at 5% 0%,   rgba(174,214,241,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 40% at 95% 100%, rgba(215,189,226,0.40) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 50% 50%,  rgba(197,202,233,0.20) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 60px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(235, 245, 251, 0.80);
+      border-bottom: 1px solid rgba(93, 173, 226, 0.20);
+    }
+
+    .nav-inner {
+      max-width: 740px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: var(--gradient-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(93, 173, 226, 0.35);
+    }
+
+    .nav-brand {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      background: var(--gradient-deep);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-sep {
+      color: var(--text-muted);
+      font-weight: 300;
+      -webkit-text-fill-color: var(--text-muted);
+    }
+
+    .nav-page {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    /* ── Contenu ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    /* ── En-tête ── */
+    header {
+      margin-bottom: 44px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--blue-deep);
+      background: rgba(93, 173, 226, 0.12);
+      border: 1px solid rgba(93, 173, 226, 0.30);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.10;
+      margin-bottom: 14px;
+      color: var(--text-primary);
+    }
+
+    h1 span {
+      background: var(--gradient-deep);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .meta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .meta-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gradient-deep);
+      flex-shrink: 0;
+    }
+
+    /* ── Séparateur ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(93,173,226,0.30), rgba(125,60,152,0.25), transparent);
+      margin: 36px 0;
+    }
+
+    /* ── Sections ── */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 26px 26px 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 16px rgba(93, 173, 226, 0.07), 0 1px 4px rgba(125, 60, 152, 0.05);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    section:hover {
+      border-color: var(--card-border-hover);
+      box-shadow: 0 4px 24px rgba(93, 173, 226, 0.12), 0 2px 8px rgba(125, 60, 152, 0.08);
+    }
+
+    h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .h2-text {
+      background: var(--gradient-deep);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      background: var(--gradient-deep);
+      font-size: 0.70rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-secondary);
+    }
+
+    ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gradient-pastel);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    a {
+      background: var(--gradient-deep);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    a:hover { opacity: 0.75; text-decoration: underline; }
+
+    /* ── Bloc info ── */
+    .info-block {
+      background: linear-gradient(135deg, rgba(174,214,241,0.15) 0%, rgba(215,189,226,0.15) 100%);
+      border: 1px solid rgba(93, 173, 226, 0.22);
+      border-radius: 12px;
+      padding: 13px 16px;
+      margin-top: 14px;
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 10px;
+    }
+
+    .info-block .icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 24px 24px 52px;
+      border-top: 1px solid rgba(93, 173, 226, 0.20);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-copy strong {
+      background: var(--gradient-deep);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.78rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      -webkit-text-fill-color: var(--text-muted);
+      background: none;
+    }
+
+    .footer-links a:hover {
+      -webkit-text-fill-color: var(--blue-mid);
+    }
+
+    @media (max-width: 520px) {
+      main    { padding: 36px 18px 64px; }
+      section { padding: 20px 18px 16px; border-radius: 14px; }
+      h1      { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-icon">🎮</div>
+      <span class="nav-brand">VGVault</span>
+      <span class="nav-sep">/</span>
+      <span class="nav-page">Conditions d'utilisation</span>
+    </div>
+  </nav>
+
+  <!-- Contenu -->
+  <main>
+    <header>
+      <div class="badge">📄 Document légal</div>
+      <h1>Conditions<br /><span>d'utilisation</span></h1>
+      <p class="subtitle">Veuillez lire attentivement ces conditions avant d'utiliser VGVault. En téléchargeant ou en utilisant l'application, vous les acceptez intégralement.</p>
+      <div class="meta">
+        <div class="meta-item"><span class="meta-dot"></span> Dernière mise à jour : janvier 2025</div>
+        <div class="meta-item"><span class="meta-dot"></span> Application : VGVault</div>
+        <div class="meta-item"><span class="meta-dot"></span> Développeur : Olivier Geiger</div>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- 1 -->
+    <section>
+      <h2><span class="num">1</span><span class="h2-text">Acceptation des conditions</span></h2>
+      <p>En téléchargeant, installant ou utilisant l'application <strong>VGVault</strong>, vous acceptez sans réserve les présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'application.</p>
+      <p>Ces conditions peuvent être mises à jour à tout moment. Toute modification sera communiquée via l'application ou l'App Store. La poursuite de l'utilisation de VGVault après modification vaut acceptation des nouvelles conditions.</p>
+    </section>
+
+    <!-- 2 -->
+    <section>
+      <h2><span class="num">2</span><span class="h2-text">Description du service</span></h2>
+      <p><strong>VGVault</strong> est une application iOS de gestion de collection de jeux vidéo. Elle vous permet de :</p>
+      <ul>
+        <li>Cataloguer et organiser votre collection de jeux vidéo toutes plateformes confondues</li>
+        <li>Suivre votre progression, vos statuts et vos heures de jeu</li>
+        <li>Gérer vos prêts de jeux et recevoir des rappels de retour</li>
+        <li>Consulter des statistiques sur votre bibliothèque</li>
+        <li>Gérer votre backlog et votre liste de souhaits</li>
+      </ul>
+      <div class="info-block">
+        <span class="icon">ℹ️</span>
+        <span>VGVault est un outil de gestion personnelle. Il n'est affilié à aucun éditeur, développeur ou plateforme de jeux vidéo.</span>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section>
+      <h2><span class="num">3</span><span class="h2-text">Données et stockage</span></h2>
+      <p>VGVault stocke vos données <strong>localement sur votre appareil</strong> et, si vous avez activé iCloud, dans votre espace de stockage iCloud personnel. Aucune donnée n'est transmise à nos serveurs.</p>
+      <ul>
+        <li>Vos données vous appartiennent intégralement</li>
+        <li>La suppression de l'application entraîne la suppression des données locales</li>
+        <li>La synchronisation iCloud est soumise aux conditions d'utilisation d'Apple</li>
+        <li>Nous n'avons aucun accès à votre collection ni à vos données personnelles</li>
+      </ul>
+    </section>
+
+    <!-- 4 -->
+    <section>
+      <h2><span class="num">4</span><span class="h2-text">Abonnement VGVault Pro</span></h2>
+      <p>VGVault propose un abonnement optionnel <strong>VGVault Pro</strong> donnant accès à des fonctionnalités avancées. Les conditions suivantes s'appliquent :</p>
+      <ul>
+        <li><strong>Renouvellement automatique :</strong> l'abonnement se renouvelle automatiquement sauf résiliation au moins 24 heures avant la fin de la période en cours</li>
+        <li><strong>Gestion :</strong> vous pouvez gérer ou annuler votre abonnement depuis les Réglages de votre identifiant Apple à tout moment</li>
+        <li><strong>Remboursement :</strong> toute demande de remboursement est soumise aux politiques d'Apple</li>
+        <li><strong>Paiement :</strong> les paiements sont traités exclusivement par Apple via l'App Store</li>
+      </ul>
+      <div class="info-block">
+        <span class="icon">💳</span>
+        <span>Nous n'avons aucun accès à vos informations de paiement. Toutes les transactions sont gérées directement par Apple.</span>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section>
+      <h2><span class="num">5</span><span class="h2-text">Notifications</span></h2>
+      <p>VGVault peut envoyer des <strong>notifications locales</strong> depuis votre appareil, sans passer par un serveur, afin de vous rappeler les dates de retour prévues pour vos prêts de jeux.</p>
+      <ul>
+        <li>Les notifications sont uniquement générées lorsque vous enregistrez un prêt avec une date de retour</li>
+        <li>Vous pouvez désactiver les notifications à tout moment depuis les Réglages iOS</li>
+        <li>Aucune notification marketing ou publicitaire n'est envoyée</li>
+      </ul>
+    </section>
+
+    <!-- 6 -->
+    <section>
+      <h2><span class="num">6</span><span class="h2-text">Propriété intellectuelle</span></h2>
+      <p>L'application VGVault, son design, son code source et son contenu original sont la propriété exclusive d'<strong>Olivier Geiger</strong> et sont protégés par les lois applicables en matière de propriété intellectuelle.</p>
+      <ul>
+        <li>Il est interdit de copier, modifier, distribuer ou revendre l'application sans autorisation écrite</li>
+        <li>Il est interdit de procéder à une ingénierie inverse du code source</li>
+        <li>Les noms, logos et marques des jeux vidéo appartiennent à leurs propriétaires respectifs</li>
+      </ul>
+    </section>
+
+    <!-- 7 -->
+    <section>
+      <h2><span class="num">7</span><span class="h2-text">Utilisation acceptable</span></h2>
+      <p>VGVault est destiné à un usage personnel et non commercial. En utilisant l'application, vous vous engagez à :</p>
+      <ul>
+        <li>Ne pas utiliser l'application à des fins illicites ou frauduleuses</li>
+        <li>Ne pas tenter de contourner les mécanismes de sécurité ou de protection</li>
+        <li>Ne pas utiliser l'application pour porter atteinte aux droits de tiers</li>
+        <li>Respecter les conditions générales d'utilisation d'Apple</li>
+      </ul>
+    </section>
+
+    <!-- 8 -->
+    <section>
+      <h2><span class="num">8</span><span class="h2-text">Limitation de responsabilité</span></h2>
+      <p>VGVault est fourni <strong>« en l'état »</strong>, sans garantie d'aucune sorte. Dans les limites permises par la loi applicable :</p>
+      <ul>
+        <li>Nous ne garantissons pas l'absence d'interruptions ou d'erreurs</li>
+        <li>Nous ne sommes pas responsables de la perte de données consécutive à un problème technique ou à la suppression de l'application</li>
+        <li>Nous recommandons d'activer la synchronisation iCloud pour protéger vos données</li>
+      </ul>
+    </section>
+
+    <!-- 9 -->
+    <section>
+      <h2><span class="num">9</span><span class="h2-text">Résiliation</span></h2>
+      <p>Vous pouvez cesser d'utiliser VGVault à tout moment en supprimant l'application de votre appareil. Pour résilier un abonnement Pro actif, rendez-vous dans <strong>Réglages → Votre nom → Abonnements</strong> sur votre appareil iOS.</p>
+      <p>Nous nous réservons le droit de suspendre l'accès à l'application en cas de violation avérée des présentes conditions.</p>
+    </section>
+
+    <!-- 10 -->
+    <section>
+      <h2><span class="num">10</span><span class="h2-text">Droit applicable et contact</span></h2>
+      <p>Les présentes conditions sont régies par le droit français. Tout litige relatif à leur interprétation ou exécution relève de la compétence des tribunaux français.</p>
+      <p>Pour toute question concernant ces conditions d'utilisation :</p>
+      <div class="info-block">
+        <span class="icon">✉️</span>
+        <span>
+          <strong>Olivier Geiger</strong><br />
+          <a href="mailto:olivier.codes@gmail.com">olivier.codes@gmail.com</a>
+        </span>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2025 <strong>VGVault</strong> — Olivier Geiger. Tous droits réservés.</p>
+      <div class="footer-links">
+        <a href="#">Politique de confidentialité</a>
+        <a href="mailto:olivier.codes@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
